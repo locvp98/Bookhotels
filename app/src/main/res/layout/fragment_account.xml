@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="10dp"
+              android:background="#f6f6f6"
+              android:orientation="vertical">
+
+
+
+    <ImageView
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/backgroundlogin"
+            android:layout_width="250dp"
+               android:layout_height="400dp"/>
+
+    <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+
+        <Button
+
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimary"
+                android:text="Đăng Nhập"
+                android:id="@+id/btnnutdangnhap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/colorPrimary"
+                android:text="Đăng Kí"
+                android:background="@drawable/custum_google"
+                android:id="@+id/btnnutdangki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

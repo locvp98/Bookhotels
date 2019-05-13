@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BookHotels</string>
+    <string name="title_activity_home_nav">HomeNavActivity</string>
+    <string name="title_home">Khám phá</string>
+    <string name="title_dashboard">Đã lưu</string>
+    <string name="title_notifications">Tin nhắn</string>
+    <string name="title_account">Tài Khoản</string>
+    <string name="timkiem_thanhpho">Tên thành phố</string>
+    <string name="diemden">Điểm đến hàng đầu</string>
+    <string name="goiy">Gợi ý</string>
+    <string name="xemthem">Xem thêm</string>
+</resources>
