@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toolbar
 import com.example.bookhotels.R
 import com.example.bookhotels.adapter.AllDiscoveryHotel
+import com.example.bookhotels.dto.AllCity
 import com.example.bookhotels.dto.City
 import com.example.bookhotels.dto.Hotels
 import com.example.bookhotels.uiview.discover.DiscoveryPresenter
@@ -21,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_all_discovery.*
 
 
 class AllDiscovery : AppCompatActivity(),DiscoveryView {
+
     lateinit var discoveryPresenter: DiscoveryPresenter
     lateinit var hotels: Hotels
     lateinit var allaraylist:ArrayList<Hotels>
@@ -60,7 +62,7 @@ class AllDiscovery : AppCompatActivity(),DiscoveryView {
         recycle_alldis.adapter =adapter
     }
 
-    override fun getdatacity(citylist: ArrayList<City>) {
+    override fun getdatacity(citylist: ArrayList<AllCity>) {
 
     }
 }

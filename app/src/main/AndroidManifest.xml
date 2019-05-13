@@ -11,15 +11,24 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".uiview.login.LoginActivity"
-        android:label="">
+        <activity android:name=".uiview.detailhotels.DetailHotelsActivity"
+          android:label=""
+                  android:screenOrientation="portrait"
+        >
+        </activity>
+        <activity
+                android:name=".uiview.login.LoginActivity"
+                android:screenOrientation="portrait"
+                android:label="">
         </activity>
         <activity
                 android:name=".uiview.alldiscovery.AllDiscovery"
+                android:screenOrientation="portrait"
                 android:label="Gợi ý">
         </activity>
         <activity
                 android:name=".uiview.welcomescreen.HomeNavActivity"
+                android:screenOrientation="portrait"
                 android:label="@string/title_activity_home_nav">
         </activity>
         <activity

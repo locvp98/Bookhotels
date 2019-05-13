@@ -12,6 +12,7 @@ import android.widget.RelativeLayout
 import com.example.bookhotels.R
 import com.example.bookhotels.adapter.DiscoveryAdapter
 import com.example.bookhotels.adapter.DiscoveryCityAdapter
+import com.example.bookhotels.dto.AllCity
 import com.example.bookhotels.dto.City
 import com.example.bookhotels.dto.Hotels
 import com.example.bookhotels.uiview.alldiscovery.AllDiscovery
@@ -21,14 +22,16 @@ import kotlinx.android.synthetic.main.fragment_discover.view.*
 class DiscoverFragment : Fragment(), DiscoveryView, View.OnClickListener{
 
 
+
     private lateinit var discoveryPresenter: DiscoveryPresenter
     private lateinit var discoverilist: ArrayList<Hotels>
-    lateinit var thanhpholist:ArrayList<City>
+    lateinit var thanhpholist:ArrayList<AllCity>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_discover, container, false)
         discoveryPresenter = DiscoveryPresenter(this)
         discoveryPresenter.getCampaignsModel()
+        discoveryPresenter.getdatacitytp()
 //        var relaytivexemthem:RelativeLayout=view.
         view.relaytivexemthem.setOnClickListener(this)
         return view
@@ -48,7 +51,7 @@ class DiscoverFragment : Fragment(), DiscoveryView, View.OnClickListener{
 
     }
 
-    override fun getdatacity(citylist: ArrayList<City>) {
+    override fun getdatacity(citylist: ArrayList<AllCity>) {
         thanhpholist= ArrayList()
 
         var linearLayoutManager:LinearLayoutManager= LinearLayoutManager(activity)
@@ -69,5 +72,7 @@ class DiscoverFragment : Fragment(), DiscoveryView, View.OnClickListener{
             }
         }
     }
+
+
 
 }

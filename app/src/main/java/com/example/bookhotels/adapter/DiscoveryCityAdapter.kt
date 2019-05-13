@@ -2,6 +2,7 @@ package com.example.bookhotels.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.bookhotels.R
+import com.example.bookhotels.dto.AllCity
 import com.example.bookhotels.dto.City
 import kotlinx.android.synthetic.main.custumlayout_cityadapter.view.*
 
-class DiscoveryCityAdapter(var context:Context,var citylist: ArrayList<City>): RecyclerView.Adapter<DiscoveryCityAdapter.RecycleviewHodel>() {
+class DiscoveryCityAdapter(var context:Context,var citylist: ArrayList<AllCity>): RecyclerView.Adapter<DiscoveryCityAdapter.RecycleviewHodel>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecycleviewHodel {
        val view :View =LayoutInflater.from(context).inflate(R.layout.custumlayout_cityadapter,p0,false)
@@ -24,11 +26,13 @@ class DiscoveryCityAdapter(var context:Context,var citylist: ArrayList<City>): R
     }
 
     override fun onBindViewHolder(p0: RecycleviewHodel, p1: Int) {
-       var city:City=citylist.get(p1)
+       var city:AllCity=citylist.get(p1)
         p0.tvcity.text=city.city
         Glide.with(context)
             .load(city.image)
             .into(p0.imagcho)
+
+
     }
 
     class RecycleviewHodel(view :View): RecyclerView.ViewHolder(view) {

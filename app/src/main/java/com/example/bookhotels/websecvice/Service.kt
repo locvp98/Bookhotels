@@ -9,4 +9,7 @@ interface Service {
     @GET("/dataroms")
     fun getdatakhachsan():Call<ResponseBody>
 
+    @GET("/datahotels")
+    fun getdatathanhpho():Call<ResponseBody>
+
 }
