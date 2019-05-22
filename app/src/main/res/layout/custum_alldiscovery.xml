@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        android:layout_marginTop="5dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_marginTop="5dp"
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
@@ -9,7 +9,7 @@
 
         <ImageView
                 android:background="@drawable/custum_imagegioithieu"
-                android:src="@drawable/custum_imagegioithieu"
+                app:srcCompat="@drawable/custum_imagegioithieu"
                 android:scaleType="centerCrop"
                 android:id="@+id/imganhgoiy"
                 android:layout_width="180dp"

@@ -55,5 +55,25 @@ class Hotels {
         this.hotelid = hotelid
     }
 
+    constructor(
+        _idhotels: String?,
+        tenphong: String?,
+        diachi: String?,
+        image: String?,
+        giaphong: Int?,
+        maso: Int?,
+        chitietphong: String?,
+        quydinh: String?
+    ) {
+        this._idhotels = _idhotels
+        this.tenphong = tenphong
+        this.diachi = diachi
+        this.image = image
+        this.giaphong = giaphong
+        this.maso = maso
+        this.chitietphong = chitietphong
+        this.quydinh = quydinh
+    }
+
 
 }

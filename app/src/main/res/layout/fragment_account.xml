@@ -2,47 +2,134 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
               android:padding="10dp"
-              android:background="#f6f6f6"
+              android:background="@color/white"
               android:orientation="vertical">
 
 
+    <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/lldangnhap1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/backgroundlogin"
+                android:layout_width="250dp"
+                android:layout_height="400dp"/>
 
-    <ImageView
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/backgroundlogin"
-            android:layout_width="250dp"
-               android:layout_height="400dp"/>
+        <LinearLayout
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        >
+
+            <Button
+
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:background="@color/colorPrimary"
+                    android:text="Đăng Nhập"
+                    android:id="@+id/btnnutdangnhap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:layout_weight="1"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="Đăng Kí"
+                    android:background="@drawable/custum_google"
+                    android:id="@+id/btnnutdangki"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:background="@color/white"
+            android:visibility="gone"
             android:layout_marginTop="16dp"
-            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:id="@+id/lldangnhap2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-    >
+            android:layout_height="wrap_content">
 
-        <Button
+        <androidx.cardview.widget.CardView
+                android:layout_gravity="center_horizontal"
+                app:cardCornerRadius="75dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp">
 
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:background="@color/colorPrimary"
-                android:text="Đăng Nhập"
-                android:id="@+id/btnnutdangnhap"
+            <ImageButton
+                    android:background="@color/colorPrimaryDark"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                android:text="van loc"
+                android:textSize="24dp"
+                android:id="@+id/tvten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-        <Button
-                android:layout_weight="1"
+        <TextView
+                android:textSize="16dp"
                 android:layout_marginLeft="16dp"
-                android:textColor="@color/colorPrimary"
-                android:text="Đăng Kí"
-                android:background="@drawable/custum_google"
-                android:id="@+id/btnnutdangki"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/custum_acc"
+                android:layout_marginTop="16dp"
+                android:textAllCaps="false"
+                android:text="@string/thongtin"
+                android:drawableLeft="@drawable/iconuser"
+                android:drawableRight="@drawable/next"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
+        <TextView
+                android:textSize="16dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/custum_acc"
+                android:layout_marginTop="16dp"
+                android:textAllCaps="false"
+                android:text="@string/caidat"
+                android:drawableLeft="@drawable/caidat"
+                android:drawableRight="@drawable/next"
+                android:layout_width="match_parent"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:layout_height="50dp"/>
+
+        <TextView
+                android:id="@+id/tvdangxuat"
+                android:textSize="16dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/custum_acc"
+                android:layout_marginTop="16dp"
+                android:textAllCaps="false"
+                android:text="@string/dangxuat"
+                android:drawableLeft="@drawable/dangxuat"
+                android:drawableRight="@drawable/next"
+                android:layout_width="match_parent"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:layout_height="50dp"/>
     </LinearLayout>
+
+
 </LinearLayout>

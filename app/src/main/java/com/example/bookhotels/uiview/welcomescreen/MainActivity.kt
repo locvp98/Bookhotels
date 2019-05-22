@@ -2,9 +2,9 @@ package com.example.bookhotels.uiview.welcomescreen
 
 import android.app.ProgressDialog
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import com.example.bookhotels.R
 import kotlinx.android.synthetic.main.activity_main.*
 import java.sql.Time

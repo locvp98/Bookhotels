@@ -7,5 +7,6 @@ import com.example.bookhotels.dto.Hotels
 interface Discoverylistenner {
     fun getdatahotels(discoverylist: ArrayList<Hotels>)
     fun getcity(citylist:ArrayList<AllCity>)
+    fun demsoluongphong(soluong:Int)
 
 }

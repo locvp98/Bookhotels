@@ -6,7 +6,10 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="colortextdiscovery">#534F4F</color>
+    <color name="colorchu">#524E4E</color>
 
     <color name="colorfacebook">#4a6ea9</color>
     <color name="colorgogle">#da4835</color>
+
+    <color name="brown">#A3A2A2</color>
 </resources>

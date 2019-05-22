@@ -16,89 +16,113 @@ import retrofit2.Response
 import java.io.IOException
 
 class DiscoveryModel(val discoverylistenner: Discoverylistenner) {
+
+
     companion object {
         var TAG = "DiscoveryModel"
-        lateinit var discoverylist: ArrayList<Hotels>
-        lateinit var thanhpholist:ArrayList<City>
-        lateinit var listallcity:ArrayList<AllCity>
-        var city = ""
+        var discoverylist: ArrayList<Hotels> = ArrayList()
+        var thanhpholist: ArrayList<City> = ArrayList()
+            var city = ""
+          var idcitys: String=""
+          var idcity: String=""
+         var listallcity: ArrayList<AllCity> = ArrayList()
+
     }
 
-    fun getDiscoveryHotel() {
+        fun getDiscoveryHotel() {
 
-        discoverylist= ArrayList()
-        thanhpholist= ArrayList();
-        val call: Call<ResponseBody> = Client.getService()!!.getdatakhachsan()
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-            }
+            thanhpholist = ArrayList();
+            val call: Call<ResponseBody> = Client.getService()!!.getdatakhachsan()
+            call.enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                }
 
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                var jsonarr: JSONArray = JSONArray(response.body()!!.string())
-                var jsonhotelsid: JSONObject
-                for (i in 0 until jsonarr.length()) {
-                    var objjson: JSONObject = jsonarr.getJSONObject(i)
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    var jsonarr: JSONArray = JSONArray(response.body()!!.string())
+                    var jsonhotelsid: JSONObject
+                    for (i in 0 until jsonarr.length()) {
+                        var objjson: JSONObject = jsonarr.getJSONObject(i)
 
-                    val idhotels = objjson.getString("_id")
-                    val tenphong = objjson.getString("tenphong")
-                    val diachi = objjson.getString("diachi")
-                    val image = Constant.BASE_URL + "" + objjson.getString("image")
-                    val giaphong = objjson.getInt("giaphong")
-                    val maso = objjson.getInt("maso")
-                    val chitietphong = objjson.getString("chitietphong")
-                    val quydinh = objjson.getString("quydinh")
-                    try {
-                         jsonhotelsid = objjson.getJSONObject("hotelid")
-                        val idcity = jsonhotelsid.getString("_id")
-                         city = jsonhotelsid.getString("city")
-                        val hinhanh = Constant.BASE_URL + "" + jsonhotelsid.getString("image")
-                        var citydto:City = City(city,hinhanh)
+                        val idhotels = objjson.getString("_id")
+                        val tenphong = objjson.getString("tenphong")
+                        val diachi = objjson.getString("diachi")
+                        val image = Constant.BASE_URL + "" + objjson.getString("image")
+                        val giaphong = objjson.getInt("giaphong")
+                        val maso = objjson.getInt("maso")
+                        val chitietphong = objjson.getString("chitietphong")
+                        val quydinh = objjson.getString("quydinh")
+
+                        try {
+                            jsonhotelsid = objjson.getJSONObject("hotelid")
+                            idcitys = jsonhotelsid.getString("_id")
+                            city = jsonhotelsid.getString("city")
+                            val hinhanh = Constant.BASE_URL + "" + jsonhotelsid.getString("image")
+                            var citydto: City = City(city, hinhanh)
                             thanhpholist.add(citydto)
 
-                   //    Log.d(TAG,"" + sum)
-                    } catch (ignored:Exception){}
-                    var hotels:Hotels= Hotels(idhotels,tenphong,diachi,image,giaphong,maso,chitietphong,quydinh,thanhpholist)
+                        } catch (ignored: Exception) {
+                        }
 
-                    discoverylist.add(hotels)
-                    discoverylistenner.getdatahotels(discoverylist)
+                        var hotels: Hotels = Hotels(
+                            idhotels,
+                            tenphong,
+                            diachi,
+                            image,
+                            giaphong,
+                            maso,
+                            chitietphong,
+                            quydinh,
+                            thanhpholist
+                        )
 
+                        discoverylist.add(hotels)
+
+                        discoverylistenner.getdatahotels(discoverylist)
+
+                    }
+                }
+            })
+
+        }
+
+        fun getdataCity() {
+
+            val call: Call<ResponseBody> = Client.getService()!!.getdatathanhpho()
+            call.enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                }
+
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    var Jsonciarr: JSONArray = JSONArray(response.body()!!.string())
+
+                    for (i in 0 until Jsonciarr.length()) {
+                        var jsonobb: JSONObject  = Jsonciarr.getJSONObject(i)
+                        idcity = jsonobb.getString("_id")
+                        val tpcity = jsonobb.getString("city")
+                        val hinhanh = Constant.BASE_URL + "" + jsonobb.getString("image")
+                        var allcitydto = AllCity(idcity, tpcity, hinhanh)
+                        listallcity.add(allcitydto)
+                        discoverylistenner.getcity(listallcity)
+                    }
                 }
 
 
-            }
-        })
+            })
+       Log.d(TAG, "khoong co so " + idcity)
 
-    }
+        }
 
-    fun getdataCity(){
-
-
-      val call:Call<ResponseBody> =Client.getService()!!.getdatathanhpho()
-        call.enqueue( object :Callback<ResponseBody>{
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-
-            }
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                var Jsonciarr:JSONArray = JSONArray(response.body()!!.string())
-                listallcity=ArrayList()
-
-                for (i in 0 until Jsonciarr.length()){
-
-                    var jsonobb:JSONObject=Jsonciarr.getJSONObject(i)
-                    val idcity = jsonobb.getString("_id")
-                   val tpcity = jsonobb.getString("city")
-                    val hinhanh = Constant.BASE_URL + "" + jsonobb.getString("image")
-                    var allcitydto:AllCity = AllCity(idcity,tpcity,hinhanh)
-                    listallcity.add(allcitydto)
-                    discoverylistenner.getcity(listallcity)
-
-                }
+        fun demsoluong() {
+            if (idcitys.equals(idcity)) {
+                var soluonglist: ArrayList<Hotels> = ArrayList()
+                var soluong: Int = discoverylist.size
+                Log.d(TAG, "" + idcity)
+                discoverylistenner.demsoluongphong(soluong)
+            } else {
+                Log.d(TAG, "ko tim thay" + discoverylist.size)
             }
 
+        }
 
-        })
-
-
-    }
 
 }

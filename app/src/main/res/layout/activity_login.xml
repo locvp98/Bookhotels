@@ -8,12 +8,12 @@
         android:layout_height="match_parent"
         tools:context=".uiview.login.LoginActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
             android:id="@+id/mtoolbarlg"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
             android:layout_marginRight="16dp"
@@ -25,15 +25,15 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/logo"
+            app:srcCompat="@drawable/logo"
     />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edemaildangnhap"
                 android:hint="Địa chỉ Email"
                 android:layout_width="match_parent"
@@ -41,21 +41,25 @@
         />
 
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+    >
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edmatkhaudangnhap"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
             android:id="@+id/tvquenmatkhau"
@@ -65,6 +69,7 @@
             android:text="Quên mật khẩu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
 
     <Button
             android:id="@+id/btndangnhap"

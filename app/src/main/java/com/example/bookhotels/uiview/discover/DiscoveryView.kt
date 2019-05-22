@@ -8,5 +8,6 @@ interface DiscoveryView {
 
     fun getdatahotels(hotelslist:ArrayList<Hotels>)
     fun getdatacity(citylist:ArrayList<AllCity>)
+    fun demsoluongphong(soluong:Int)
 
 }

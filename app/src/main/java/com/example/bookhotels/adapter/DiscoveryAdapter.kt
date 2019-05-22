@@ -3,9 +3,9 @@ package com.example.bookhotels.adapter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +23,7 @@ import com.example.bookhotels.uiview.welcomescreen.HomeNavActivity
 import kotlinx.android.synthetic.main.custum_layoutdiscovery.view.*
 
 class DiscoveryAdapter(var context: Context,var discoverylist:ArrayList<Hotels>):
-    RecyclerView.Adapter<DiscoveryAdapter.DiscoveryViewHodel>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<DiscoveryAdapter.DiscoveryViewHodel>() {
 
    companion object {
        var idhotels:String=""
@@ -56,20 +56,14 @@ class DiscoveryAdapter(var context: Context,var discoverylist:ArrayList<Hotels>)
 
     }
 
-    class DiscoveryViewHodel(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class DiscoveryViewHodel(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
             var hotelis:Hotels?=null
             var postpo:Int=0
         init {
-//            var discoverFragment:DiscoverFragment= DiscoverFragment()
-//           var transaction:FragmentTransaction =(itemView.context as HomeNavActivity).getSupportFragmentManager().beginTransaction().replace(R.id.container,discoverFragment)
-//            val bundle = Bundle()
-//            bundle.putString("maban", hotelis!!._idhotels)
-//            discoverFragment.setArguments(bundle)
-//            transaction.commit()
 
             itemView.setOnClickListener {
-                var intent:Intent= Intent(itemView.context,DetailHotelsActivity::class.java)
+                             var intent:Intent= Intent(itemView.context,DetailHotelsActivity::class.java)
                 intent.putExtra("idhotel", hotelis!!._idhotels)
                 itemView.context.startActivity(intent)
                 Toast.makeText(itemView.context,"id ne "+ hotelis!!._idhotels,Toast.LENGTH_LONG).show()

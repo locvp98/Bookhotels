@@ -1,8 +1,9 @@
 package com.example.bookhotels.uiview.welcomescreen
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
+import android.os.PersistableBundle
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.bookhotels.R
 import com.example.bookhotels.uiview.discover.DiscoverFragment
 import com.example.bookhotels.uiview.account.AccountFragment
@@ -17,6 +18,7 @@ class HomeNavActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home_nav)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         supportFragmentManager.beginTransaction().replace(R.id.container,DiscoverFragment()).commit()
+
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -38,11 +40,10 @@ class HomeNavActivity : AppCompatActivity() {
                 supportFragmentManager.beginTransaction().replace(R.id.container,AccountFragment()).commit()
                 return@OnNavigationItemSelectedListener true
             }
-            else ->{
-                supportFragmentManager.beginTransaction().replace(R.id.container,DiscoverFragment()).commit()
-                return@OnNavigationItemSelectedListener true
-            }
+
         }
         false
     }
+
+
 }

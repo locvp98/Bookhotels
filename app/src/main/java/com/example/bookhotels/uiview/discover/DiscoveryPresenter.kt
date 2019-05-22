@@ -7,9 +7,16 @@ import com.example.bookhotels.dto.Hotels
 
 class DiscoveryPresenter(val discoveryView: DiscoveryView):Discoverylistenner{
 
+    override fun demsoluongphong(soluong: Int) {
+        discoveryView.demsoluongphong(soluong)
+    }
 
 
     private val discoveryModel = DiscoveryModel(this)
+
+    fun demsoluong(){
+        discoveryModel.demsoluong()
+    }
 
     fun getCampaignsModel() {
         discoveryModel.getDiscoveryHotel()

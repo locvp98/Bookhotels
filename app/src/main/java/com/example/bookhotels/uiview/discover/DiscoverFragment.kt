@@ -2,13 +2,15 @@ package com.example.bookhotels.uiview.discover
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import android.widget.Toast
 import com.example.bookhotels.R
 import com.example.bookhotels.adapter.DiscoveryAdapter
 import com.example.bookhotels.adapter.DiscoveryCityAdapter
@@ -19,8 +21,7 @@ import com.example.bookhotels.uiview.alldiscovery.AllDiscovery
 import kotlinx.android.synthetic.main.fragment_discover.*
 import kotlinx.android.synthetic.main.fragment_discover.view.*
 
-class DiscoverFragment : Fragment(), DiscoveryView, View.OnClickListener{
-
+class DiscoverFragment : androidx.fragment.app.Fragment(), DiscoveryView, View.OnClickListener{
 
 
     private lateinit var discoveryPresenter: DiscoveryPresenter
@@ -32,6 +33,7 @@ class DiscoverFragment : Fragment(), DiscoveryView, View.OnClickListener{
         discoveryPresenter = DiscoveryPresenter(this)
         discoveryPresenter.getCampaignsModel()
         discoveryPresenter.getdatacitytp()
+        discoveryPresenter.demsoluong()
 //        var relaytivexemthem:RelativeLayout=view.
         view.relaytivexemthem.setOnClickListener(this)
         return view
@@ -39,13 +41,16 @@ class DiscoverFragment : Fragment(), DiscoveryView, View.OnClickListener{
 
     override fun getdatahotels(hotelslist: ArrayList<Hotels>) {
 
+
         discoverilist = ArrayList()
-        var linearLayoutManager: LinearLayoutManager = LinearLayoutManager(activity)
-        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        recyclehotel.layoutManager = linearLayoutManager
+        var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(activity)
+        linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+
+        recyclehotel!!.layoutManager = linearLayoutManager
         discoverilist = hotelslist
         Log.d("DDDDDD", "" + hotelslist)
-        var adapter: DiscoveryAdapter = DiscoveryAdapter(this!!.activity!!, hotelslist)
+        var adapter: DiscoveryAdapter = DiscoveryAdapter(this.activity!!, hotelslist)
         adapter.notifyDataSetChanged()
         recyclehotel.adapter = adapter
 
@@ -53,15 +58,19 @@ class DiscoverFragment : Fragment(), DiscoveryView, View.OnClickListener{
 
     override fun getdatacity(citylist: ArrayList<AllCity>) {
         thanhpholist= ArrayList()
+        thanhpholist=citylist
 
-        var linearLayoutManager:LinearLayoutManager= LinearLayoutManager(activity)
-        linearLayoutManager.orientation=LinearLayoutManager.HORIZONTAL
+
+        var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(activity)
+        linearLayoutManager.orientation= androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
         recyclecity.layoutManager=linearLayoutManager
         thanhpholist=citylist
-        var adaptercity:DiscoveryCityAdapter= DiscoveryCityAdapter(this!!.activity!!,citylist)
+
+        var adaptercity= DiscoveryCityAdapter(activity!!,citylist)
+
         adaptercity.notifyDataSetChanged()
         recyclecity.adapter=adaptercity
-
 
     }
     override fun onClick(p0: View?) {
@@ -72,6 +81,10 @@ class DiscoverFragment : Fragment(), DiscoveryView, View.OnClickListener{
             }
         }
     }
+    override fun demsoluongphong(soluong: Int) {
+        Toast.makeText(activity,"soluong"+soluong,Toast.LENGTH_LONG).show()
+    }
+
 
 
 

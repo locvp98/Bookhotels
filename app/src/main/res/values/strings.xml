@@ -9,4 +9,20 @@
     <string name="diemden">Điểm đến hàng đầu</string>
     <string name="goiy">Gợi ý</string>
     <string name="xemthem">Xem thêm</string>
+    <string name="gioithieu">Giới Thiệu</string>
+    <string name="quydinh">Quy Định</string>
+
+    <!--register-->
+    <string name="hovaten">Họ và tên</string>
+    <string name="diachiemail">Địa chỉ Email</string>
+    <string name="password">mật khẩu</string>
+    <string name="laimk">Xác nhận lại mật khẩu</string>
+    <string name="dangki">Đăng kí</string>
+    <string name="thongtin">Thông tin</string>
+    <string name="caidat">Cài Đặt</string>
+    <string name="dangxuat">Đăng xuất</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="laimatkhau">Nhập lại mật khẩu</string>
+    <string name="quaylaidangnhap">Bạn đã có tài khoản?</string>
+    <string name="dangnhap">Đăng nhập</string>
 </resources>
