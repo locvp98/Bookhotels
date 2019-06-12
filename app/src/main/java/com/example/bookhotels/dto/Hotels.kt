@@ -32,6 +32,12 @@ class Hotels {
     @SerializedName("hotelid")
     var hotelid:List<City>? = null
 
+//    lateinit var hinhyeuthich:ByteArray
+
+
+
+
+
 
     constructor(
         _idhotels: String?,
@@ -73,6 +79,27 @@ class Hotels {
         this.maso = maso
         this.chitietphong = chitietphong
         this.quydinh = quydinh
+    }
+
+    constructor()
+    constructor(
+        _idhotels: String?,
+
+        diachi: String?,
+        giaphong: Int?,
+        maso: Int?,
+        chitietphong: String?,
+        tenphong: String?
+//        hinhyeuthich: ByteArray
+    ) {
+        this._idhotels = _idhotels
+
+        this.diachi = diachi
+        this.giaphong = giaphong
+        this.maso = maso
+        this.chitietphong = chitietphong
+        this.tenphong = tenphong
+//        this.hinhyeuthich = hinhyeuthich
     }
 
 

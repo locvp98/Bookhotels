@@ -40,6 +40,10 @@ class HomeNavActivity : AppCompatActivity() {
                 supportFragmentManager.beginTransaction().replace(R.id.container,AccountFragment()).commit()
                 return@OnNavigationItemSelectedListener true
             }
+            else ->{
+                supportFragmentManager.beginTransaction().replace(R.id.container,AccountFragment()).commit()
+                return@OnNavigationItemSelectedListener true
+            }
 
         }
         false

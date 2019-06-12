@@ -18,6 +18,7 @@ import com.example.bookhotels.dto.AllCity
 import com.example.bookhotels.dto.City
 import com.example.bookhotels.dto.Hotels
 import com.example.bookhotels.uiview.alldiscovery.AllDiscovery
+import com.example.bookhotels.uiview.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_discover.*
 import kotlinx.android.synthetic.main.fragment_discover.view.*
 
@@ -36,6 +37,7 @@ class DiscoverFragment : androidx.fragment.app.Fragment(), DiscoveryView, View.O
         discoveryPresenter.demsoluong()
 //        var relaytivexemthem:RelativeLayout=view.
         view.relaytivexemthem.setOnClickListener(this)
+        view.linesearch.setOnClickListener(this)
         return view
     }
 
@@ -77,6 +79,10 @@ class DiscoverFragment : androidx.fragment.app.Fragment(), DiscoveryView, View.O
         when(p0!!.id){
             R.id.relaytivexemthem ->{
                 val intent:Intent= Intent(activity,AllDiscovery::class.java)
+                startActivity(intent)
+            }
+            R.id.linesearch->{
+                val intent:Intent= Intent(activity,SearchActivity::class.java)
                 startActivity(intent)
             }
         }

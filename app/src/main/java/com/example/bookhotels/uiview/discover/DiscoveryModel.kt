@@ -14,9 +14,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
+import java.util.Collections.list
 
 class DiscoveryModel(val discoverylistenner: Discoverylistenner) {
 
+var s:Int = 0
 
     companion object {
         var TAG = "DiscoveryModel"
@@ -26,6 +28,7 @@ class DiscoveryModel(val discoverylistenner: Discoverylistenner) {
           var idcitys: String=""
           var idcity: String=""
          var listallcity: ArrayList<AllCity> = ArrayList()
+
 
     }
 
@@ -40,10 +43,11 @@ class DiscoveryModel(val discoverylistenner: Discoverylistenner) {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     var jsonarr: JSONArray = JSONArray(response.body()!!.string())
                     var jsonhotelsid: JSONObject
+                    var idhotels=""
                     for (i in 0 until jsonarr.length()) {
                         var objjson: JSONObject = jsonarr.getJSONObject(i)
 
-                        val idhotels = objjson.getString("_id")
+                         idhotels = objjson.getString("_id")
                         val tenphong = objjson.getString("tenphong")
                         val diachi = objjson.getString("diachi")
                         val image = Constant.BASE_URL + "" + objjson.getString("image")
@@ -59,6 +63,7 @@ class DiscoveryModel(val discoverylistenner: Discoverylistenner) {
                             val hinhanh = Constant.BASE_URL + "" + jsonhotelsid.getString("image")
                             var citydto: City = City(city, hinhanh)
                             thanhpholist.add(citydto)
+
 
                         } catch (ignored: Exception) {
                         }
@@ -76,10 +81,11 @@ class DiscoveryModel(val discoverylistenner: Discoverylistenner) {
                         )
 
                         discoverylist.add(hotels)
-
                         discoverylistenner.getdatahotels(discoverylist)
 
+
                     }
+
                 }
             })
 

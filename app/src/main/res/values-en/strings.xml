@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name" translatable="false">BookHotels</string>
     <string name="title_activity_home_nav" translatable="false">HomeNavActivity</string>
-    <string name="title_home">Explore</string>
+    <string name="title_home" >Explore</string>
     <string name="title_dashboard" translatable="false">Saved</string>
     <string name="title_notifications" translatable="false">Inbook</string>
     <string name="title_account" translatable="false">Account</string>
@@ -32,14 +32,4 @@
 
     <string name="tienganh">English</string>
     <string name="tiengviet">Vietnamese</string>
-    <string name="search">search...</string>
-    <string name="xacnhan">Tôi xin cam đoan thông tin trên là hoàn toàn chính xác</string>
-    <string name="phuongthucthanhtoan">Phương thức thanh toán</string>
-    <string name="chuyenkhoan">Chuyển Khoản</string>
-    <string name="thanhtoantainoi">Thanh toán tại phòng</string>
-    <string name="xacnhanphong">Xác nhận</string>
-    <string name="sodienthoai">Số điện thoại</string>
-    <string name="tennguoidat">Họ và Tên</string>
-    <string name="chitiet">Chi tiết</string>
-    <string name="thanhtoan">Thanh toán</string>
 </resources>

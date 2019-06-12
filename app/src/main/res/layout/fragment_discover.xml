@@ -72,9 +72,10 @@
                     android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginLeft="-15dp"
+                    android:layout_marginRight="-5dp"
                     android:id="@+id/recyclecity"
                     android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -95,7 +96,6 @@
 
                     android:id="@+id/recyclehotel"
                     android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

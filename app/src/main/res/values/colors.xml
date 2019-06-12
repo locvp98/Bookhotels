@@ -12,4 +12,7 @@
     <color name="colorgogle">#da4835</color>
 
     <color name="brown">#A3A2A2</color>
+    <color name="trong">#00000000</color>
+
+    <color name="colorGray">#CCC</color>
 </resources>

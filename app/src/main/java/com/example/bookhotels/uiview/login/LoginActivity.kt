@@ -1,5 +1,6 @@
 package com.example.bookhotels.uiview.login
 
+import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -9,10 +10,17 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.bookhotels.R
 import com.example.bookhotels.uiview.account.AccountFragment
+import com.example.bookhotels.uiview.discover.DiscoverFragment
+import com.example.bookhotels.uiview.message.MessageFragment
+import com.example.bookhotels.uiview.selective.SelectiveFragment
 import com.example.bookhotels.uiview.welcomescreen.HomeNavActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_all_discovery.*
+import kotlinx.android.synthetic.main.activity_home_nav.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginView {
@@ -54,19 +62,20 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginView {
         }
     }
 
+    @SuppressLint("ResourceType")
     override fun loginSuccess(name:String) {
         var she: SharedPreferences = application.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
         var editor: SharedPreferences.Editor = she.edit()
         editor.putString("tenkh", name)
         val fragment = AccountFragment()
-        val intent = Intent(this, HomeNavActivity::class.java)
-//        supportFragmentManager.beginTransaction().replace(R.id.container,fragment).commit()
-        startActivity(intent)
-
         Toast.makeText(this, "thanh cong" + name, Toast.LENGTH_LONG).show()
         editor.commit()
-        //  onBackPressed()
+        fragment.onDestroyView()
+        super.onRestart()
+        onBackPressed()
+
     }
+
     override fun loginfell() {
         Toast.makeText(this,"bai",Toast.LENGTH_LONG).show()
 

@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.bookhotels.R
+import com.example.bookhotels.uiview.language.LanguageActivity
 import com.example.bookhotels.uiview.login.LoginActivity
 import com.example.bookhotels.uiview.register.RegisterActivity
 import kotlinx.android.synthetic.main.fragment_account.*
@@ -24,6 +25,7 @@ class AccountFragment: androidx.fragment.app.Fragment(),View.OnClickListener {
         view.btnnutdangnhap.setOnClickListener(this)
         view.btnnutdangki.setOnClickListener(this)
         view.tvdangxuat.setOnClickListener(this)
+        view.tvcaidat.setOnClickListener(this)
 
         var she: SharedPreferences =activity!!.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
          var tenkh:String?=she.getString("tenkh","")
@@ -47,17 +49,19 @@ class AccountFragment: androidx.fragment.app.Fragment(),View.OnClickListener {
            R.id.btnnutdangnhap ->{
                val intent:Intent = Intent(activity,LoginActivity::class.java)
                startActivity(intent)
+              onDetach()
+
            }
            R.id.btnnutdangki ->{
                val intent:Intent= Intent(activity,RegisterActivity::class.java)
                startActivity(intent)
            }
            R.id.tvdangxuat ->{
-
                showNewNameDialog()
-
-
-
+           }
+           R.id.tvcaidat ->{
+               val intent:Intent = Intent(activity,LanguageActivity::class.java)
+               startActivity(intent)
            }
        }
     }

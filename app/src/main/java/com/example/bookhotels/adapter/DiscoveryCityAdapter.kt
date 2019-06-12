@@ -24,7 +24,7 @@ class DiscoveryCityAdapter(var context:Context,var citylist: ArrayList<AllCity>)
     }
 
     override fun getItemCount(): Int {
-       return citylist.size
+       return 7
     }
 
     override fun onBindViewHolder(p0: RecycleviewHodel, p1: Int) {

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">BookHotels</string>
+    <string name="title_activity_home_nav" translatable="false">HomeNavActivity</string>
+    <string name="title_home" >Khám phá</string>
+    <string name="title_dashboard" translatable="false">Đã lưu</string>
+    <string name="title_notifications" translatable="false">Tin nhắn</string>
+    <string name="title_account" translatable="false">Tài Khoản</string>
+    <string name="timkiem_thanhpho">Tên thành phố</string>
+    <string name="diemden" translatable="false">Điểm đến hàng đầu</string>
+    <string name="goiy">Gợi ý</string>
+    <string name="xemthem">Xem thêm</string>
+    <string name="gioithieu">Giới Thiệu</string>
+    <string name="quydinh">Quy Định</string>
+
+    <!--register-->
+    <string name="hovaten">Họ và tên</string>
+    <string name="diachiemail">Địa chỉ Email</string>
+    <string name="password">mật khẩu</string>
+    <string name="laimk">Xác nhận lại mật khẩu</string>
+    <string name="dangki">Đăng kí</string>
+    <string name="thongtin">Thông tin</string>
+    <string name="caidat">Cài Đặt</string>
+    <string name="dangxuat">Đăng xuất</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="laimatkhau">Nhập lại mật khẩu</string>
+    <string name="quaylaidangnhap">Bạn đã có tài khoản?</string>
+    <string name="dangnhap">Đăng nhập</string>
+    <string name="gia">đ/đêm</string>
+    <string name="maso">Mã số :</string>
+
+    <string name="tienganh">Tiếng anh</string>
+    <string name="tiengviet">Tiếng việt</string>
+</resources>

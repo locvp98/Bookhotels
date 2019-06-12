@@ -1,18 +1,25 @@
 package com.example.bookhotels.uiview.detailhotels
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import com.example.bookhotels.R
 import com.example.bookhotels.dto.AllCity
 import com.example.bookhotels.dto.Hotels
+import com.example.bookhotels.uiview.ThanhToanActivity
 import com.example.bookhotels.uiview.discover.DiscoveryPresenter
 import com.example.bookhotels.uiview.discover.DiscoveryView
+import com.example.bookhotels.uiview.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_detail_hotels.*
 
-class DetailHotelsActivity : AppCompatActivity(),DiscoveryView {
+class DetailHotelsActivity : AppCompatActivity(),DiscoveryView, View.OnClickListener {
+
+
     override fun demsoluongphong(soluong: Int) {
 
     }
@@ -38,10 +45,27 @@ class DetailHotelsActivity : AppCompatActivity(),DiscoveryView {
         var intent:Intent=intent
          id=intent.getStringExtra("idhotel")
         Log.d(TAG,""+id)
+        btndatphong.setOnClickListener(this)
 
         //var hotelsdt:Hotels =
 
 
+    }
+
+    override fun onClick(p0: View?) {
+       when(p0!!.id){
+           R.id.btndatphong ->{
+               var sreef :SharedPreferences = this.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
+               var tenkh:String?=sreef.getString("tenkh","")
+               if (tenkh!!.length>0){
+                   val intent = Intent(this@DetailHotelsActivity,ThanhToanActivity::class.java)
+                   startActivity(intent)
+               }else{
+                   val intent = Intent(this@DetailHotelsActivity,LoginActivity::class.java)
+                   startActivity(intent)
+               }
+           }
+       }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -79,11 +103,11 @@ class DetailHotelsActivity : AppCompatActivity(),DiscoveryView {
         }
         if(idhotelsss.equals(id)){
             edttenphong.text=tenphong
-            edtmacho.text= "Mã số : " + maso
+            edtmacho.text="" + R.string.maso + ""+ maso
             txtdiachi.text=diachis
             txtgioithieu.text=gioithieu
             txtquydinh.text=quydinh
-            txtgiaphong.text=giatien + " đ/đêm"
+            txtgiaphong.text=giatien + ""+ R.string.gia
             Log.d(TAG,tenphong)
         }
     }

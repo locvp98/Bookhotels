@@ -31,9 +31,7 @@ class LayHotelIDActivity : AppCompatActivity(), Layhotelview {
 
         layHotelidPresenter = LayHotelidPresenter(this)
         layHotelidPresenter.gethotel(idtp)
-
-
-
+        
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

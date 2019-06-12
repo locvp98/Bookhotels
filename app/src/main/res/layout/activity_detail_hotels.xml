@@ -175,6 +175,7 @@
                 android:layout_height="wrap_content"/>
 
         <Button
+                android:id="@+id/btndatphong"
                 android:padding="10dp"
                 android:textColor="@color/white"
                 android:text="Đặt Phòng"

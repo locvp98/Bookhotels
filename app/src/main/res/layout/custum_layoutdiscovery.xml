@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+        android:layout_marginLeft="16dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
         android:orientation="vertical"
 >
 
-    <ImageView
-            android:background="@drawable/custum_imagegioithieu"
-            app:srcCompat="@drawable/custum_imagegioithieu"
-            android:scaleType="centerCrop"
-            android:id="@+id/imganhgoiy"
+    <RelativeLayout
             android:layout_width="230dp"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content">
 
-    />
+        <ImageView
+                android:background="@drawable/custum_imagegioithieu"
+                app:srcCompat="@drawable/custum_imagegioithieu"
+                android:scaleType="centerCrop"
+                android:id="@+id/imganhgoiy"
+                android:layout_width="230dp"
+                android:layout_height="150dp"
+
+        />
+
+        <ImageButton
+                android:id="@+id/imgyeuthich"
+                android:background="@color/trong"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/icloves"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+
+        <ImageButton
+                android:visibility="gone"
+                android:id="@+id/imgyeuthichs"
+                android:background="@color/trong"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/iconlive"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+
+    </RelativeLayout>
+
+
 
     <TextView
             android:textStyle="bold"
