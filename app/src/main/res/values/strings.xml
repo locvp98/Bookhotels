@@ -42,4 +42,6 @@
     <string name="tennguoidat">Họ và Tên</string>
     <string name="chitiet">Chi tiết</string>
     <string name="thanhtoan">Thanh toán</string>
+    <string name="Chat">Chat</string>
+    <string name="nhaptinnhan">Nhập tin nhắn...</string>
 </resources>

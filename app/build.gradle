@@ -47,4 +47,9 @@ dependencies {
 //Network thu vien retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-core:16.0.9'
+    implementation 'com.google.firebase:firebase-database:17.0.0'
 }
+apply plugin: 'com.google.gms.google-services'

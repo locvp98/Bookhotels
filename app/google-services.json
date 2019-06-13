@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "259853825004",
+    "firebase_url": "https://bookhotels-ed264.firebaseio.com",
+    "project_id": "bookhotels-ed264",
+    "storage_bucket": "bookhotels-ed264.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259853825004:android:cf1023a744272b80",
+        "android_client_info": {
+          "package_name": "com.example.bookhotels"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259853825004-urrb7ulmp8q2vet6eonb9q5b1pg85fpo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookhotels",
+            "certificate_hash": "a715074c0ff0972ee56d2e0af91e029482263c0b"
+          }
+        },
+        {
+          "client_id": "259853825004-06dj32rbqsn8rtbgair7flndajrd4ias.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCe0Vdq9_R9FZdtsh097gZwQTZlU54CxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259853825004-06dj32rbqsn8rtbgair7flndajrd4ias.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

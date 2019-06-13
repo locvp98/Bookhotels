@@ -29,4 +29,8 @@ interface Service {
         @Field("username") username: String
     ): Call<ResponseBody>
 
+    @GET("/datauser")
+    fun getdatauser(): Call<ResponseBody>
+
+
 }

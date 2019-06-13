@@ -14,9 +14,13 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:replace="android:appComponentFactory">
-        <activity android:name=".uiview.ThanhToanActivity"
-        android:label="@string/thanhtoan"
+        <activity android:name=".uiview.chatuser.ChatUserActivity"
+        android:label=""
         >
+        </activity>
+        <activity
+                android:name=".uiview.ThanhToanActivity"
+                android:label="@string/thanhtoan">
         </activity>
         <activity android:name=".uiview.search.SearchActivity">
         </activity>
