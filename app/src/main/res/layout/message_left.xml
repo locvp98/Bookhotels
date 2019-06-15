@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                android:layout_width="300dp"
+                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical"
+>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp">
+
+        <ImageView
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:id="@+id/imgMyAvatarLeft"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" android:layout_marginTop="10dp"
+                android:layout_marginStart="0dp" android:layout_alignParentLeft="true" android:layout_marginLeft="0dp"/>
+
+        <TextView
+                android:textSize="16sp"
+                android:id="@+id/tv_showmessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/message_left"
+                android:padding="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@id/imgMyAvatarLeft"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
+                android:text="Adsdcscsdcs"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000" android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/imgMyAvatarLeft" android:layout_marginRight="20dp"/>
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

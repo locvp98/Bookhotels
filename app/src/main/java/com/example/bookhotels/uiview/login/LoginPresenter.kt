@@ -17,8 +17,8 @@ class LoginPresenter(val loginView: LoginView):LoginListener {
         }
     }
 
-    override fun loginSuccess(name:String) {
-        loginView.loginSuccess(name)
+    override fun loginSuccess(name:String,_id: String) {
+        loginView.loginSuccess(name,_id)
     }
     override fun loginFale(message: String) {
         loginView.loginfell()

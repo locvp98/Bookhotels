@@ -1,5 +1,7 @@
 package com.example.bookhotels.uiview.message
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,17 +29,27 @@ class MessageFragment : androidx.fragment.app.Fragment(), View.OnClickListener, 
     }
 
     override fun listuser(datalist: ArrayList<User>) {
-        lisuser = ArrayList()
 
-        var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
-            androidx.recyclerview.widget.LinearLayoutManager(activity)
-        linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+        var she: SharedPreferences =activity!!.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
+        var tenkh:String?=she.getString("tenkh","")
+        if (tenkh!!.length>0){
+            lisuser = ArrayList()
 
-        recycle_chat!!.layoutManager = linearLayoutManager
-        lisuser = datalist
-        // Log.d("DDDDDD", "" + hotelslist)
-        var adapter: UserAdapter = UserAdapter(this.activity!!, datalist)
-        adapter.notifyDataSetChanged()
-        recycle_chat.adapter = adapter
+            var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
+                androidx.recyclerview.widget.LinearLayoutManager(activity)
+            linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+
+            recycle_chat!!.layoutManager = linearLayoutManager
+            lisuser = datalist
+            // Log.d("DDDDDD", "" + hotelslist)
+            var adapter: UserAdapter = UserAdapter(this.activity!!, datalist)
+            adapter.notifyDataSetChanged()
+            recycle_chat.adapter = adapter
+        }
+        else{
+            txtmoidangnhap.visibility = View.VISIBLE
+        }
+
+
     }
 }

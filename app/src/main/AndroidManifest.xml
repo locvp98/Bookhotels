@@ -16,6 +16,7 @@
             tools:replace="android:appComponentFactory">
         <activity android:name=".uiview.chatuser.ChatUserActivity"
         android:label=""
+                  android:windowSoftInputMode = "stateVisible"
         >
         </activity>
         <activity

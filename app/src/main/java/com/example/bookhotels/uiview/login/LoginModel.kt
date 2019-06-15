@@ -21,10 +21,12 @@ class LoginModel(val loginListener: LoginListener) {
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful && response.body() != null){
+
                     var jsonoop:JSONObject= JSONObject(response.body()!!.string())
                     var username:String=jsonoop.get("username").toString()
+                    var _id:String=jsonoop.get("_id").toString()
                     Log.d("AAAAA",""+jsonoop)
-                    loginListener.loginSuccess(username)
+                    loginListener.loginSuccess(username,_id)
 
                 }else{
                   loginListener.loginFale("loi")

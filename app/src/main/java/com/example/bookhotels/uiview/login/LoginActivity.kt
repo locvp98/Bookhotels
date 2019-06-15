@@ -63,19 +63,20 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginView {
     }
 
     @SuppressLint("ResourceType")
-    override fun loginSuccess(name:String) {
+    override fun loginSuccess(name:String,_id:String) {
+
         var she: SharedPreferences = application.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
         var editor: SharedPreferences.Editor = she.edit()
         editor.putString("tenkh", name)
+        editor.putString("_id", _id)
         val fragment = AccountFragment()
-        Toast.makeText(this, "thanh cong" + name, Toast.LENGTH_LONG).show()
         editor.commit()
+
         fragment.onDestroyView()
         super.onRestart()
         onBackPressed()
 
     }
-
     override fun loginfell() {
         Toast.makeText(this,"bai",Toast.LENGTH_LONG).show()
 
