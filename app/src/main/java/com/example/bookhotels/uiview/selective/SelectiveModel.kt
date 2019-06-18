@@ -60,11 +60,11 @@ class SelectiveModel(val context: Context) {
 
                 hotellist.add(hotel)
                // selectivelistener.danhsachteuthich(hotellist)
-                Log.d("OOPOPOP",""+ "lam gi co " +   hotel.tenphong)
+             //   Log.d("OOPOPOP",""+ "lam gi co " +   hotel.tenphong)
                 cursor.moveToNext()
             }
         }
-        Log.d("OOPOPOP",""+ "kkokokoko" + cursor)
+        Log.d("AAAAAAA",""+ "kkokokoko" + hotellist.size)
         return hotellist
 
     }

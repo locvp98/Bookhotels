@@ -25,53 +25,54 @@ import android.view.inputmethod.InputMethodManager
 import android.app.Activity
 
 
+class ChatUserActivity : AppCompatActivity(), View.OnClickListener, ChatUserView {
 
 
-
-class ChatUserActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var database: DatabaseReference
-    lateinit var id:String
-    lateinit var _idhientai:String
-    lateinit var chatarr:ArrayList<Messagesuser>;
+    lateinit var id: String
+    lateinit var _idhientai: String
+    lateinit var chatarr: ArrayList<Messagesuser>
+    lateinit var chatUserPresenter: ChatUserPresenter
+    lateinit var username: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_user)
+        xulytoobal()
 
-        var intent:Intent=getIntent()
-        id = intent.getStringExtra("iduser")
-        var username:String = intent.getStringExtra("username")
-        var she: SharedPreferences =this!!.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
-        Log.d("LLLLLL",""+id.toString())
-
+        var she: SharedPreferences = this!!.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
         database = FirebaseDatabase.getInstance().reference
+        _idhientai = she.getString("_id", "")
 
-        _idhientai =she.getString("_id","")
-        Toast.makeText(this,"id: " +_idhientai ,Toast.LENGTH_LONG).show()
-
-        setSupportActionBar(chat_toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        tvnamechat.text=username
         imgsend.setOnClickListener(this)
-        readMessage(_idhientai,id)
 
+        chatUserPresenter = ChatUserPresenter(this)
+        chatUserPresenter.getdatachat(_idhientai, id)
     }
 
     override fun onClick(p0: View?) {
-        when(p0!!.id){
-            R.id.imgsend ->{
-                var messa =edt_send.text.toString()
-                if (!messa.equals("")){
-                    senMessage(_idhientai,id,messa)
+        when (p0!!.id) {
+            R.id.imgsend -> {
+                var messa = edt_send.text.toString()
+                if (!messa.equals("")) {
+                    senMessage(_idhientai, id, messa)
                     edt_send.text.clear()
                     val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
                 }
-
             }
         }
+    }
 
+    fun xulytoobal(){
+
+        var intent: Intent = getIntent()
+        id = intent.getStringExtra("iduser")
+        username = intent.getStringExtra("username")
+        setSupportActionBar(chat_toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        tvnamechat.text = username
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -84,65 +85,26 @@ class ChatUserActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun senMessage(sender:String,userid:String,message:String){
-        var hashmap: HashMap<String,String> = HashMap()
-        hashmap.put("sender",sender)
-        hashmap.put("userid",userid)
-        hashmap.put("message",message)
+    fun senMessage(sender: String, userid: String, message: String) {
+        var hashmap: HashMap<String, String> = HashMap()
+        hashmap.put("sender", sender)
+        hashmap.put("userid", userid)
+        hashmap.put("message", message)
         database = FirebaseDatabase.getInstance().reference
         database.child("chat").push().setValue(hashmap)
     }
 
-    fun readMessage(_idhientai:String, ids:String){
+    @SuppressLint("WrongConstant")
+    override fun getlistchat(listchat: ArrayList<Messagesuser>) {
         chatarr = ArrayList()
-
-        // database = FirebaseDatabase.getInstance().getReference("chat")
-
-        val childEventListener = object : ChildEventListener {
-            @SuppressLint("WrongConstant")
-            override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
-                    var mes:Messagesuser= dataSnapshot.getValue(Messagesuser::class.java)!!
-             //   Log.d("AAAAA",""+mes.sender.toString())
-                if (mes.sender.equals(_idhientai) && mes.userid.equals(ids) || mes.sender.equals(ids) && mes.userid.equals(_idhientai)) {
-                //    Log.d("AAAAA",""+meidss.message.toString())
-                        chatarr.add(mes)
-                        Log.d("LLLLLL",""+chatarr.size.toString())
-                    }
-
-                var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
-                    androidx.recyclerview.widget.LinearLayoutManager(this@ChatUserActivity)
-                linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-                recycle_chatuser.layoutManager=linearLayoutManager
-                var adapter:MessageAdapter =MessageAdapter(this@ChatUserActivity,chatarr)
-                adapter.notifyDataSetChanged()
-                recycle_chatuser.adapter =adapter
-
-
-
-//                Log.d(TAG, "onChildAdded:" + dataSnapshot.key!!)
-
-
-            }
-
-            override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String?) {
-
-            }
-
-            override fun onChildRemoved(dataSnapshot: DataSnapshot) {
-
-            }
-
-            override fun onChildMoved(dataSnapshot: DataSnapshot, previousChildName: String?) {
-
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-
-            }
-        }
-        database.child("chat").addChildEventListener(childEventListener)
-
+        chatarr = listchat
+        var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(this@ChatUserActivity)
+        linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+        recycle_chatuser.layoutManager = linearLayoutManager
+        var adapter: MessageAdapter = MessageAdapter(this@ChatUserActivity, chatarr)
+        adapter.notifyDataSetChanged()
+        recycle_chatuser.adapter = adapter
     }
-
 
 }

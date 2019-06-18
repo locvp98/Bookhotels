@@ -7,6 +7,8 @@ import com.example.bookhotels.dto.Hotels
 
 class DiscoveryPresenter(val discoveryView: DiscoveryView):Discoverylistenner{
 
+    lateinit var arrayhotel:ArrayList<Hotels>
+
     override fun demsoluongphong(soluong: Int) {
         discoveryView.demsoluongphong(soluong)
     }
@@ -27,7 +29,12 @@ class DiscoveryPresenter(val discoveryView: DiscoveryView):Discoverylistenner{
 
 
     override fun getdatahotels(discoverylist: ArrayList<Hotels>) {
+        arrayhotel = ArrayList()
+        arrayhotel = discoverylist
+        if (arrayhotel.size>0){
+            Log.d("rrrrr",""+discoverylist.size)
             discoveryView.getdatahotels(discoverylist)
+        }
         }
 
     override fun getcity(citylist: ArrayList<AllCity>) {

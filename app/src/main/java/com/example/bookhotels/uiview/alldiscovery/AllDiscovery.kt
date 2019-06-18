@@ -2,6 +2,7 @@ package com.example.bookhotels.uiview.alldiscovery
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.example.bookhotels.adapter.AllDiscoveryHotel
 import com.example.bookhotels.dto.AllCity
@@ -45,6 +46,7 @@ class AllDiscovery : AppCompatActivity(),DiscoveryView {
         allaraylist= ArrayList()
         allaraylist=hotelslist
 
+        recycle_alldis.setHasFixedSize(true)
         var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
             androidx.recyclerview.widget.GridLayoutManager(this, 2)
 //        linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.VERTICAL

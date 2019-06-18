@@ -38,10 +38,9 @@ class MessageFragment : androidx.fragment.app.Fragment(), View.OnClickListener, 
             var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
                 androidx.recyclerview.widget.LinearLayoutManager(activity)
             linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-
             recycle_chat!!.layoutManager = linearLayoutManager
             lisuser = datalist
-            // Log.d("DDDDDD", "" + hotelslist)
+
             var adapter: UserAdapter = UserAdapter(this.activity!!, datalist)
             adapter.notifyDataSetChanged()
             recycle_chat.adapter = adapter
@@ -49,7 +48,5 @@ class MessageFragment : androidx.fragment.app.Fragment(), View.OnClickListener, 
         else{
             txtmoidangnhap.visibility = View.VISIBLE
         }
-
-
     }
 }

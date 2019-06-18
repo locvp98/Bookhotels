@@ -22,12 +22,13 @@ var s:Int = 0
 
     companion object {
         var TAG = "DiscoveryModel"
-        var discoverylist: ArrayList<Hotels> = ArrayList()
+        lateinit var discoverylist: ArrayList<Hotels>
         var thanhpholist: ArrayList<City> = ArrayList()
             var city = ""
           var idcitys: String=""
           var idcity: String=""
          var listallcity: ArrayList<AllCity> = ArrayList()
+        lateinit var hotels: Hotels
 
 
     }
@@ -35,6 +36,7 @@ var s:Int = 0
         fun getDiscoveryHotel() {
 
             thanhpholist = ArrayList();
+            discoverylist= ArrayList()
             val call: Call<ResponseBody> = Client.getService()!!.getdatakhachsan()
             call.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -44,8 +46,9 @@ var s:Int = 0
                     var jsonarr: JSONArray = JSONArray(response.body()!!.string())
                     var jsonhotelsid: JSONObject
                     var idhotels=""
+                    var objjson: JSONObject
                     for (i in 0 until jsonarr.length()) {
-                        var objjson: JSONObject = jsonarr.getJSONObject(i)
+                        objjson  = jsonarr.getJSONObject(i)
 
                          idhotels = objjson.getString("_id")
                         val tenphong = objjson.getString("tenphong")
@@ -63,12 +66,10 @@ var s:Int = 0
                             val hinhanh = Constant.BASE_URL + "" + jsonhotelsid.getString("image")
                             var citydto: City = City(city, hinhanh)
                             thanhpholist.add(citydto)
-
-
                         } catch (ignored: Exception) {
                         }
 
-                        var hotels: Hotels = Hotels(
+                         hotels= Hotels(
                             idhotels,
                             tenphong,
                             diachi,
@@ -79,11 +80,8 @@ var s:Int = 0
                             quydinh,
                             thanhpholist
                         )
-
                         discoverylist.add(hotels)
                         discoverylistenner.getdatahotels(discoverylist)
-
-
                     }
 
                 }

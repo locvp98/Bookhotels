@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginView {
 
 
+
     lateinit var loginPresenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,8 +64,8 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginView {
     }
 
     @SuppressLint("ResourceType")
-    override fun loginSuccess(name:String,_id:String) {
-
+    override
+    fun loginSuccess(name:String,_id:String) {
         var she: SharedPreferences = application.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
         var editor: SharedPreferences.Editor = she.edit()
         editor.putString("tenkh", name)
@@ -78,8 +79,16 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginView {
 
     }
     override fun loginfell() {
-        Toast.makeText(this,"bai",Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"email hoặc mật khẩu không chính xác",Toast.LENGTH_LONG).show()
 
+    }
+
+    override fun emailkhongdung() {
+        edemaildangnhap.error ="Email không hợp lệ"
+    }
+
+    override fun passwordphai6kitu() {
+        edmatkhaudangnhap.error ="mật khẩu phải 6 kí tự trở nên"
     }
 
 }

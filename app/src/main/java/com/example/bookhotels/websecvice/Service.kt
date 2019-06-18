@@ -33,4 +33,10 @@ interface Service {
     fun getdatauser(): Call<ResponseBody>
 
 
+    @GET("/dataUser/{idchat}")
+    fun getdataUserchat(
+        @Path("idchat")
+        idchat: String): Call<ResponseBody>
+
+
 }

@@ -14,8 +14,11 @@ import com.example.bookhotels.dto.Hotels
 import kotlinx.android.synthetic.main.custum_layoutdiscovery.view.*
 
 class SeletiveAdapte(var context: Context, var danhsachlist: ArrayList<Hotels>): androidx.recyclerview.widget.RecyclerView.Adapter<SeletiveAdapte.RecycleviewHodel>()  {
+
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleviewHodel {
-        val view :View = LayoutInflater.from(context).inflate(R.layout.custum_layoutdiscovery,parent,false)
+        val view :View = LayoutInflater.from(context).inflate(R.layout.custum_layoutselevite,parent,false)
         return RecycleviewHodel(view)    }
 
     override fun getItemCount(): Int {
@@ -29,9 +32,9 @@ class SeletiveAdapte(var context: Context, var danhsachlist: ArrayList<Hotels>):
         holder.giaphong!!.text = hotels.giaphong.toString() + " "+" đ/đêm"
         holder.diachi!!.text= hotels.diachi.toString()
 
-//        Glide.with(context)
-//            .load(hotels.image)
-//            .into( holder.image!!)
+        Glide.with(context)
+            .load(hotels.image)
+            .into( holder.image!!)
   }
 
 

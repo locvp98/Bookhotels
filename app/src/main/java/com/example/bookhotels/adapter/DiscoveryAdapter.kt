@@ -13,17 +13,21 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.bookhotels.R
 import com.example.bookhotels.dto.Hotels
+import com.example.bookhotels.dto.User
 import com.example.bookhotels.uiview.detailhotels.DetailHotelsActivity
+import com.example.bookhotels.uiview.message.MessageView
 import com.example.bookhotels.uiview.selective.SelectiveModel
 import com.example.bookhotels.uiview.selective.Selectivelistener
 import com.example.bookhotels.uiview.selective.SeletiveView
 import kotlinx.android.synthetic.main.custum_layoutdiscovery.view.*
 
 class DiscoveryAdapter(var context: Context,var discoverylist:ArrayList<Hotels>):
-    androidx.recyclerview.widget.RecyclerView.Adapter<DiscoveryAdapter.DiscoveryViewHodel>(),Selectivelistener {
-    override fun danhsachteuthich(danhsachlist: ArrayList<Hotels>) {
+    androidx.recyclerview.widget.RecyclerView.Adapter<DiscoveryAdapter.DiscoveryViewHodel>() {
 
-    }
+    var selectiveModel = SelectiveModel(context)
+    var seletilist:ArrayList<Hotels> = ArrayList()
+    var id:String=""
+
 
     companion object {
        var idhotels:String=""
@@ -32,6 +36,8 @@ class DiscoveryAdapter(var context: Context,var discoverylist:ArrayList<Hotels>)
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): DiscoveryViewHodel {
         val view :View =LayoutInflater.from(context).inflate(R.layout.custum_layoutdiscovery,p0,false)
+
+
 
         return DiscoveryViewHodel(view)
     }
@@ -51,29 +57,53 @@ class DiscoveryAdapter(var context: Context,var discoverylist:ArrayList<Hotels>)
             .load(hotels.image)
             .into( p0.image!!)
 
+
+        seletilist= ArrayList()
+        seletilist =selectiveModel.laydanhsachyeuthich()
+        Log.d("ADADADAD",""+seletilist.size)
+        if (seletilist.size>0){
+
+            for (i in 0 until seletilist.size){
+                var  selehotel:Hotels  = seletilist.get(i)
+                id=selehotel._idhotels.toString()
+                if (hotels._idhotels.equals(id)){
+                    p0.imgyeuthich.visibility=View.GONE
+                    p0.imgyeuthichs.visibility=View.VISIBLE
+                }
+            }
+
+
+        }
+
         p0.imgyeuthich.setOnClickListener(View.OnClickListener {
 
             Toast.makeText(context,"phong" + hotels.tenphong,Toast.LENGTH_LONG).show()
-            val selectivemodel:SelectiveModel=SelectiveModel(context)
-            val ho=Hotels()
-            ho.tenphong = hotels.tenphong!!
-            ho.diachi= hotels.diachi!!
-           ho.chitietphong= hotels.chitietphong!!
-           ho.maso = hotels.maso!!
-            ho.giaphong= hotels.giaphong!!
-            ho.image= hotels.image!!
-           ho._idhotels= hotels._idhotels!!
 
+//            if (hotels._idhotels.equals(id)){
+//                p0.imgyeuthich.visibility=View.GONE
+//                p0.imgyeuthichs.visibility=View.VISIBLE
+//            }
 
-            Log.d("giatri",""+ho.toString())
+                val selectivemodel:SelectiveModel=SelectiveModel(context)
+                val ho=Hotels()
+                ho.tenphong = hotels.tenphong!!
+                ho.diachi= hotels.diachi!!
+                ho.chitietphong= hotels.chitietphong!!
+                ho.maso = hotels.maso!!
+                ho.giaphong= hotels.giaphong!!
+                ho.image= hotels.image!!
+                ho._idhotels= hotels._idhotels!!
 
-          val kiemtra:Boolean= selectivemodel.themyeuthich(ho)
+                Log.d("giatri",""+ho.toString())
+                val kiemtra:Boolean= selectivemodel.themyeuthich(ho)
 
-            if (kiemtra){
-                p0.imgyeuthich.visibility=View.GONE
-                p0.imgyeuthichs.visibility=View.VISIBLE
+                if (kiemtra){
+                    p0.imgyeuthich.visibility=View.GONE
+                    p0.imgyeuthichs.visibility=View.VISIBLE
 //                p0.imgyeuthich.setImageResource(R.drawable.iconlive)
-            }
+                }
+
+
         })
         p0.setdata(hotels,p1)
     }
@@ -86,7 +116,6 @@ class DiscoveryAdapter(var context: Context,var discoverylist:ArrayList<Hotels>)
                 var intent:Intent= Intent(itemView.context,DetailHotelsActivity::class.java)
                 intent.putExtra("idhotel", hotelis!!._idhotels)
                 itemView.context.startActivity(intent)
-                Toast.makeText(itemView.context,"id ne "+ hotelis!!._idhotels,Toast.LENGTH_LONG).show()
 
             }
         }

@@ -9,7 +9,7 @@
 
 
     <LinearLayout
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/lldangnhap1"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
 
     <LinearLayout
             android:background="@color/white"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_marginTop="16dp"
             android:orientation="vertical"
             android:id="@+id/lldangnhap2"
@@ -68,12 +68,31 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp">
 
-            <ImageButton
-                    android:background="@color/colorPrimary"
+            <ImageView
                     android:scaleType="centerCrop"
-                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/imgalllogo"
+                    android:src="@drawable/logo"
+                    android:layout_width="match_parent"
+                       android:layout_height="match_parent"/>
+
+            <RelativeLayout
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/custum_anh"
                     android:layout_width="150dp"
-                    android:layout_height="150dp"/>
+                    android:layout_height="70dp">
+
+                <ImageButton
+                        android:id="@+id/imgupdatelogo"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/ic_image"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+
+
+            </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 

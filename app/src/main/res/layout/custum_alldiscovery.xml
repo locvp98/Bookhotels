@@ -23,17 +23,27 @@
                 />
 
                 <ImageButton
+                        android:id="@+id/img_hinhyeuthich"
                         android:background="@color/trong"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="5dp"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/iclove2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:src="@drawable/icloves"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+
+                <ImageButton
+                        android:visibility="gone"
+                        android:id="@+id/img_hinhyeuthichss"
+                        android:background="@color/trong"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/iconlive"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
 
         </RelativeLayout>
-
-
 
         <TextView
                 android:textStyle="bold"

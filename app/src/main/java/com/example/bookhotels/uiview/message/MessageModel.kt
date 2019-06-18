@@ -10,6 +10,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MessageModel(val messageListener: MessageListener){
+
+
     companion object {
         var user: User? = null
     }
@@ -18,7 +20,6 @@ class MessageModel(val messageListener: MessageListener){
         val call:Call<ResponseBody> = Client.getService()!!.getdatauser()
         call.enqueue(object :Callback<ResponseBody>{
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-
             }
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 var lisuser:ArrayList<User> = ArrayList()
@@ -32,10 +33,9 @@ class MessageModel(val messageListener: MessageListener){
                     user= User(iduser,email,username)
                     lisuser.add(user!!)
                     messageListener.listuser(lisuser)
-
                 }
             }
-
         })
     }
+
 }

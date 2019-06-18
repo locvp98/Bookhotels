@@ -1,5 +1,8 @@
 package com.example.bookhotels.uiview.welcomescreen
 
+import android.annotation.TargetApi
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -47,6 +50,11 @@ class HomeNavActivity : AppCompatActivity() {
 
         }
         false
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    fun hasPermission(permission: String): Boolean {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M || checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
     }
 
 

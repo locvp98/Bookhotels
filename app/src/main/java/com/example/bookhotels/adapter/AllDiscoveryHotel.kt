@@ -2,6 +2,7 @@ package com.example.bookhotels.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,16 @@ import com.bumptech.glide.Glide
 import com.example.bookhotels.R
 import com.example.bookhotels.dto.Hotels
 import com.example.bookhotels.uiview.detailhotels.DetailHotelsActivity
+import com.example.bookhotels.uiview.selective.SelectiveModel
 import kotlinx.android.synthetic.main.custum_alldiscovery.view.*
 
 class AllDiscoveryHotel(var context: Context, var alldiscoverylist: ArrayList<Hotels>):
     androidx.recyclerview.widget.RecyclerView.Adapter<AllDiscoveryHotel.RecycleviewHolder>() {
+
+    var selectiveModel = SelectiveModel(context)
+    var seletilist:ArrayList<Hotels> = ArrayList()
+    var id:String=""
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecycleviewHolder {
         val view:View=LayoutInflater.from(context).inflate(R.layout.custum_alldiscovery,p0,false)
 
@@ -36,6 +43,45 @@ class AllDiscoveryHotel(var context: Context, var alldiscoverylist: ArrayList<Ho
             .load(hotels.image)
             .into(p0.imganhgoiy)
 
+
+
+        seletilist= ArrayList()
+        seletilist =selectiveModel.laydanhsachyeuthich()
+        Log.d("ADADADAD",""+seletilist.size)
+        if (seletilist.size>0){
+
+            for (i in 0 until seletilist.size){
+                var  selehotel:Hotels  = seletilist.get(i)
+                id=selehotel._idhotels.toString()
+                if (hotels._idhotels.equals(id)){
+                    p0.imghinhyeutich.visibility=View.GONE
+                    p0.imghinhyeutichsss.visibility=View.VISIBLE
+                }
+            }
+        }
+
+        p0.imghinhyeutich.setOnClickListener {
+            val selectivemodel:SelectiveModel=SelectiveModel(context)
+            val ho=Hotels()
+            ho.tenphong = hotels.tenphong!!
+            ho.diachi= hotels.diachi!!
+            ho.chitietphong= hotels.chitietphong!!
+            ho.maso = hotels.maso!!
+            ho.giaphong= hotels.giaphong!!
+            ho.image= hotels.image!!
+            ho._idhotels= hotels._idhotels!!
+
+            Log.d("giatri",""+ho.toString())
+            val kiemtra:Boolean= selectivemodel.themyeuthich(ho)
+
+            if (kiemtra){
+                p0.imghinhyeutich.visibility=View.GONE
+                p0.imghinhyeutichsss.visibility=View.VISIBLE
+//                p0.imgyeuthich.setImageResource(R.drawable.iconlive)
+            }
+
+        }
+
         p0.setdata(hotels,p1)
 
     }
@@ -53,6 +99,8 @@ class AllDiscoveryHotel(var context: Context, var alldiscoverylist: ArrayList<Ho
             }
         }
 
+        var imghinhyeutich:ImageView = view.img_hinhyeuthich
+        var imghinhyeutichsss:ImageView = view.img_hinhyeuthichss
         var imganhgoiy:ImageView = view.imganhgoiy
         var tvtenkhachsan:TextView =view.tvtenkhachsan
         var tvgiaphong:TextView= view.tvgiaphong
