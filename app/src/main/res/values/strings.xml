@@ -45,4 +45,6 @@
     <string name="Chat">Chat</string>
     <string name="nhaptinnhan">Nhập tin nhắn...</string>
     <string name="moibandangnhap">Mời bạn đăng nhập để kết nối tin nhắn</string>
+    <string name="loiemail">Email không hợp lệ</string>
+    <string name="loimk">mật khẩu phải 6 kí tự trở nên</string>
 </resources>

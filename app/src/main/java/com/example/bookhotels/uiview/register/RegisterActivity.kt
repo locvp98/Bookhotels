@@ -11,11 +11,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.bookhotels.R
 import com.example.bookhotels.uiview.login.LoginActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_register.edmatkhaudangnhap
 
 class RegisterActivity : AppCompatActivity(),View.OnClickListener,RegisterView {
 
-lateinit var registerPresenter: RegisterPresenter
+
+    lateinit var registerPresenter: RegisterPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -38,7 +41,6 @@ lateinit var registerPresenter: RegisterPresenter
             }
         }
 
-
     }
 
     override fun onClick(p0: View?) {
@@ -52,8 +54,6 @@ lateinit var registerPresenter: RegisterPresenter
                 if (mk.equals(laimk) && mk.length>6 && laimk.length>6){
                     registerPresenter.postdata(email,mk,hovaten)
                 }
-
-
             }
         }
 
@@ -69,5 +69,13 @@ lateinit var registerPresenter: RegisterPresenter
 
     override fun loginFale(message: String) {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show()
+    }
+
+    override fun emailkhongdung() {
+        edemaildangnhap.error = "" + R.string.loiemail
+    }
+
+    override fun passwordphai6kitu() {
+        edmatkhaudangnhap.error ="" +R.string.loimk
     }
 }

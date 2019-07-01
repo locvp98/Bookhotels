@@ -7,10 +7,17 @@ class RegisterPresenter(val registerView: RegisterView):ResgisterListener {
     private val registerModel=RegisterModel(this)
 
     fun postdata(email:String,password:String,username:String){
-        val emailtype = email.matches(Constant.EMAIL_TYPE.toRegex())
-        if (emailtype){
-            registerModel.posdataregister(email,password,username)
+
+        if (!email.matches(Constant.EMAIL_TYPE.toRegex())){
+            registerView.emailkhongdung()
         }
+        else if (password.length<6){
+            registerView.passwordphai6kitu()
+        }
+        else {
+                registerModel.posdataregister(email,password,username)
+        }
+
 
     }
 
