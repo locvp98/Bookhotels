@@ -13,7 +13,6 @@ class DiscoveryPresenter(val discoveryView: DiscoveryView):Discoverylistenner{
         discoveryView.demsoluongphong(soluong)
     }
 
-
     private val discoveryModel = DiscoveryModel(this)
 
     fun demsoluong(){
@@ -27,7 +26,6 @@ class DiscoveryPresenter(val discoveryView: DiscoveryView):Discoverylistenner{
         discoveryModel.getdataCity()
     }
 
-
     override fun getdatahotels(discoverylist: ArrayList<Hotels>) {
         arrayhotel = ArrayList()
         arrayhotel = discoverylist
@@ -40,7 +38,6 @@ class DiscoveryPresenter(val discoveryView: DiscoveryView):Discoverylistenner{
     override fun getcity(citylist: ArrayList<AllCity>) {
         discoveryView.getdatacity(citylist)
     }
-
 
     }
 

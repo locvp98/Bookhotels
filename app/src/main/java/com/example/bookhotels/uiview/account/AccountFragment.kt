@@ -33,7 +33,6 @@ import java.util.*
 
 class AccountFragment: androidx.fragment.app.Fragment(),View.OnClickListener {
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view:View =inflater.inflate(R.layout.fragment_account,container,false)
 
@@ -44,13 +43,14 @@ class AccountFragment: androidx.fragment.app.Fragment(),View.OnClickListener {
         view.imgupdatelogo.setOnClickListener(this)
 
         var she: SharedPreferences =activity!!.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
-         var tenkh:String?=she.getString("tenkh","")
+        var tenkh:String?=she.getString("tenkh","")
 
         if (tenkh!!.length>0){
             view.lldangnhap1.visibility= View.GONE
             view.lldangnhap2.visibility=View.VISIBLE
             view.tvten.text=tenkh
         }
+
         else{
             view.lldangnhap1.visibility= View.VISIBLE
             view.lldangnhap2.visibility=View.GONE
@@ -113,6 +113,7 @@ class AccountFragment: androidx.fragment.app.Fragment(),View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && data != null) {
+
             val image = data.data
             val bitmap: Bitmap = MediaStore.Images.Media.getBitmap((activity as HomeNavActivity).contentResolver, image)
            var tenfile=persistImage(bitmap).toString()
@@ -123,8 +124,8 @@ class AccountFragment: androidx.fragment.app.Fragment(),View.OnClickListener {
         }
     }
 
-
     private fun persistImage(bitmap: Bitmap): File? {
+
         val filesDir: File = (activity as HomeNavActivity).filesDir
         val currentTime: Date = Calendar.getInstance().time
         val name: String = "$currentTime"
@@ -145,9 +146,8 @@ class AccountFragment: androidx.fragment.app.Fragment(),View.OnClickListener {
 
     fun showNewNameDialog() {
         val dialogBuilder = AlertDialog.Builder(activity)
-
         dialogBuilder.setMessage("bạn có muốn đăng xuất?")
-        dialogBuilder.setPositiveButton("có", { dialog, whichButton ->
+        dialogBuilder.setPositiveButton("có") { dialog, whichButton ->
 
             var she:SharedPreferences =activity!!.getSharedPreferences("dangnhap", Context.MODE_PRIVATE)
             var editor: SharedPreferences.Editor =she.edit()
@@ -156,20 +156,19 @@ class AccountFragment: androidx.fragment.app.Fragment(),View.OnClickListener {
 
             var tenkh:String?=she.getString("tenkh","")
 
-            if (tenkh!!.length>0){
+            if (tenkh!!.isNotEmpty()){
                 lldangnhap1.visibility= View.GONE
                 lldangnhap2.visibility=View.VISIBLE
                 tvten.text=tenkh
-            }
-            else{
+            } else{
+
                 lldangnhap1.visibility= View.VISIBLE
                 lldangnhap2.visibility=View.GONE
                 tvten.text=tenkh
             }
-        })
-        dialogBuilder.setNegativeButton("Cancel", { dialog, whichButton ->
-
-        })
+        }
+        dialogBuilder.setNegativeButton("Cancel") { dialog, whichButton ->
+        }
         val b = dialogBuilder.create()
         b.show()
     }

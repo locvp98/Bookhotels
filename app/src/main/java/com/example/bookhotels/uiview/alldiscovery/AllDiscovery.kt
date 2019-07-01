@@ -12,16 +12,14 @@ import com.example.bookhotels.uiview.discover.DiscoveryView
 import kotlinx.android.synthetic.main.activity_all_discovery.*
 
 
-
-
-class AllDiscovery : AppCompatActivity(),DiscoveryView {
+class AllDiscovery : AppCompatActivity(), DiscoveryView {
     override fun demsoluongphong(soluong: Int) {
 
     }
 
     lateinit var discoveryPresenter: DiscoveryPresenter
     lateinit var hotels: Hotels
-    lateinit var allaraylist:ArrayList<Hotels>
+    lateinit var allaraylist: ArrayList<Hotels>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +31,7 @@ class AllDiscovery : AppCompatActivity(),DiscoveryView {
         discoveryPresenter = DiscoveryPresenter(this)
         discoveryPresenter.getCampaignsModel()
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
@@ -42,18 +41,19 @@ class AllDiscovery : AppCompatActivity(),DiscoveryView {
             else -> return super.onOptionsItemSelected(item)
         }
     }
+
     override fun getdatahotels(hotelslist: ArrayList<Hotels>) {
-        allaraylist= ArrayList()
-        allaraylist=hotelslist
+        allaraylist = ArrayList()
+        allaraylist = hotelslist
 
         recycle_alldis.setHasFixedSize(true)
         var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
             androidx.recyclerview.widget.GridLayoutManager(this, 2)
 //        linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-        recycle_alldis.layoutManager=linearLayoutManager
-        var adapter:AllDiscoveryHotel= AllDiscoveryHotel(this,hotelslist)
-        adapter.notifyDataSetChanged()
-        recycle_alldis.adapter =adapter
+        recycle_alldis.layoutManager = linearLayoutManager
+        var adapter = AllDiscoveryHotel(this)
+        adapter.addItems(hotelslist)
+        recycle_alldis.adapter = adapter
     }
 
     override fun getdatacity(citylist: ArrayList<AllCity>) {

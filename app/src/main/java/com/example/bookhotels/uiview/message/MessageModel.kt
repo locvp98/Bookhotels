@@ -30,6 +30,7 @@ class MessageModel(val messageListener: MessageListener){
                     val iduser  = objjson.getString("_id")
                     val email = objjson.getString("email")
                     val username = objjson.getString("username")
+                    val token = objjson.getString("token")
                     user= User(iduser,email,username)
                     lisuser.add(user!!)
                     messageListener.listuser(lisuser)

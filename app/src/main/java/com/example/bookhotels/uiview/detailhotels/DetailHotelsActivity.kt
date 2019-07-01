@@ -47,9 +47,6 @@ class DetailHotelsActivity : AppCompatActivity(),DiscoveryView, View.OnClickList
         Log.d(TAG,""+id)
         btndatphong.setOnClickListener(this)
 
-        //var hotelsdt:Hotels =
-
-
     }
 
     override fun onClick(p0: View?) {
@@ -101,6 +98,7 @@ class DetailHotelsActivity : AppCompatActivity(),DiscoveryView, View.OnClickList
             quydinh=hotels.quydinh.toString()
 
         }
+
         if(idhotelsss.equals(id)){
             edttenphong.text=tenphong
             edtmacho.text="" + R.string.maso + ""+ maso

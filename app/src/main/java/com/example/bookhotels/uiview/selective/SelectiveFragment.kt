@@ -18,23 +18,18 @@ import kotlinx.android.synthetic.main.activity_all_discovery.*
 import kotlinx.android.synthetic.main.fragment_selective.*
 import kotlinx.android.synthetic.main.fragment_selective.view.*
 
-class SelectiveFragment: androidx.fragment.app.Fragment(),SeletiveView {
+class SelectiveFragment : androidx.fragment.app.Fragment(), SeletiveView {
 
-   lateinit var selectivePresenter:SelectivePresenter
-    lateinit var seletivelist:ArrayList<Hotels>
-   lateinit var recycle_selevitess:RecyclerView
-
+    lateinit var selectivePresenter: SelectivePresenter
+    lateinit var seletivelist: ArrayList<Hotels>
+    lateinit var recycle_selevitess: RecyclerView
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view:View=inflater.inflate(R.layout.fragment_selective,container,false)
-     recycle_selevitess = view.findViewById(R.id.recycle_selevitess)
-
-        selectivePresenter= SelectivePresenter(this!!.activity!!,this)
+        val view: View = inflater.inflate(R.layout.fragment_selective, container, false)
+        recycle_selevitess = view.findViewById(R.id.recycle_selevitess)
+        selectivePresenter = SelectivePresenter(this!!.activity!!, this)
         selectivePresenter.danhsachyeuthichd()
-        Log.d("DDDDDDTTTTTT", "" +   selectivePresenter.danhsachyeuthichd().toString())
-
-
         return view
     }
 
@@ -44,72 +39,18 @@ class SelectiveFragment: androidx.fragment.app.Fragment(),SeletiveView {
         seletivelist = ArrayList()
         seletivelist = danhsachlist
 
-        var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
-            androidx.recyclerview.widget.LinearLayoutManager(activity)
-        linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-        recycle_selevitess.layoutManager=linearLayoutManager
-        var adapter:SeletiveAdapte= SeletiveAdapte(this!!.activity!!,seletivelist)
+        var linearLayoutManager = LinearLayoutManager(activity)
+        linearLayoutManager.orientation =LinearLayoutManager.VERTICAL
+        recycle_selevitess.layoutManager = linearLayoutManager
+        var adapter: SeletiveAdapte = SeletiveAdapte(this!!.activity!!, seletivelist)
         adapter.notifyDataSetChanged()
-        recycle_selevitess.adapter =adapter
-
-        Log.d("KKKKKKK",""+seletivelist.size)
+        recycle_selevitess.adapter = adapter
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     override fun laydanhsachthatbai() {
-        Toast.makeText(activity,"ko co",Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, "ko co", Toast.LENGTH_LONG).show()
     }
 
 }

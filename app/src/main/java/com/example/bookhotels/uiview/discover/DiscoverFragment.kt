@@ -22,12 +22,11 @@ import com.example.bookhotels.uiview.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_discover.*
 import kotlinx.android.synthetic.main.fragment_discover.view.*
 
-class DiscoverFragment : androidx.fragment.app.Fragment(), DiscoveryView, View.OnClickListener{
-
+class DiscoverFragment : androidx.fragment.app.Fragment(), DiscoveryView, View.OnClickListener {
 
     private lateinit var discoveryPresenter: DiscoveryPresenter
     private lateinit var discoverilist: ArrayList<Hotels>
-    lateinit var thanhpholist:ArrayList<AllCity>
+    lateinit var thanhpholist: ArrayList<AllCity>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_discover, container, false)
@@ -35,19 +34,15 @@ class DiscoverFragment : androidx.fragment.app.Fragment(), DiscoveryView, View.O
         discoveryPresenter.getCampaignsModel()
         discoveryPresenter.getdatacitytp()
         discoveryPresenter.demsoluong()
-//        var relaytivexemthem:RelativeLayout=view.
         view.relaytivexemthem.setOnClickListener(this)
         view.linesearch.setOnClickListener(this)
         return view
     }
-
     override fun getdatahotels(hotelslist: ArrayList<Hotels>) {
 
-
         discoverilist = ArrayList()
-        var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
-            androidx.recyclerview.widget.LinearLayoutManager(activity)
-        linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+        var linearLayoutManager= LinearLayoutManager(activity)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         recyclehotel!!.layoutManager = linearLayoutManager
         discoverilist = hotelslist
@@ -55,43 +50,38 @@ class DiscoverFragment : androidx.fragment.app.Fragment(), DiscoveryView, View.O
         var adapter: DiscoveryAdapter = DiscoveryAdapter(this.activity!!, hotelslist)
         adapter.notifyDataSetChanged()
         recyclehotel.adapter = adapter
-
     }
 
     override fun getdatacity(citylist: ArrayList<AllCity>) {
-        thanhpholist= ArrayList()
-        thanhpholist=citylist
+        thanhpholist = ArrayList()
+        thanhpholist = citylist
 
+        var linearLayoutManager =LinearLayoutManager(activity)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        recyclecity.layoutManager = linearLayoutManager
+        thanhpholist = citylist
 
-        var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
-            androidx.recyclerview.widget.LinearLayoutManager(activity)
-        linearLayoutManager.orientation= androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-        recyclecity.layoutManager=linearLayoutManager
-        thanhpholist=citylist
-
-        var adaptercity= DiscoveryCityAdapter(activity!!,citylist)
+        var adaptercity = DiscoveryCityAdapter(activity!!, citylist)
 
         adaptercity.notifyDataSetChanged()
-        recyclecity.adapter=adaptercity
+        recyclecity.adapter = adaptercity
 
     }
+
     override fun onClick(p0: View?) {
-        when(p0!!.id){
-            R.id.relaytivexemthem ->{
-                val intent:Intent= Intent(activity,AllDiscovery::class.java)
+        when (p0!!.id) {
+            R.id.relaytivexemthem -> {
+                val intent = Intent(activity, AllDiscovery::class.java)
                 startActivity(intent)
             }
-            R.id.linesearch->{
-                val intent:Intent= Intent(activity,SearchActivity::class.java)
+            R.id.linesearch -> {
+                val intent = Intent(activity, SearchActivity::class.java)
                 startActivity(intent)
             }
         }
     }
+
     override fun demsoluongphong(soluong: Int) {
-        Toast.makeText(activity,"soluong"+soluong,Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, "soluong" + soluong, Toast.LENGTH_LONG).show()
     }
-
-
-
-
 }

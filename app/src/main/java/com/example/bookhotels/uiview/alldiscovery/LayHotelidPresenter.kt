@@ -13,6 +13,5 @@ class LayHotelidPresenter(var layhotelview: Layhotelview):LayHotelListener {
     override fun getdatahotel(hotellist: ArrayList<Hotels>) {
        layhotelview.gethotel(hotellist)
 
-
     }
 }

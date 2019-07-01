@@ -1,5 +1,6 @@
 package com.example.bookhotels.uiview.chatuser
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -23,6 +24,17 @@ import kotlin.collections.HashMap
 
 import android.view.inputmethod.InputMethodManager
 import android.app.Activity
+import android.graphics.Bitmap
+import android.os.Build
+import android.provider.MediaStore
+import androidx.annotation.RequiresApi
+import com.example.bookhotels.comon.Constant
+import com.example.bookhotels.uiview.welcomescreen.HomeNavActivity
+import kotlinx.android.synthetic.main.fragment_account.*
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
+import java.util.*
 
 
 class ChatUserActivity : AppCompatActivity(), View.OnClickListener, ChatUserView {
@@ -61,6 +73,67 @@ class ChatUserActivity : AppCompatActivity(), View.OnClickListener, ChatUserView
                     imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
                 }
             }
+
+            R.id.imgicon ->{
+                checkPermisstion()
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun onIsPermisstionNotGranted() {
+        //chua dc cap dc cap
+        requestPermissions(
+            arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            Constant.REQESS_IMAGE
+        )
+    }
+
+    private fun checkPermisstion() {
+        if ((this as HomeNavActivity).hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            openImage()
+        } else {
+            onIsPermisstionNotGranted()
+        }
+    }
+
+    fun openImage(){
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/*"
+        startActivityForResult(intent, Constant.REQESS_IMAGE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK && data != null) {
+
+            val image = data.data
+            val bitmap: Bitmap = MediaStore.Images.Media.getBitmap((this as HomeNavActivity).contentResolver, image)
+            var tenfile=persistImage(bitmap).toString()
+            val type: String = Constant.IMAGE
+            imgalllogo.setImageBitmap(bitmap)
+            Toast.makeText(this,"" + tenfile,Toast.LENGTH_SHORT).show()
+
+        }
+    }
+
+    private fun persistImage(bitmap: Bitmap): File? {
+
+        val filesDir: File = (this as HomeNavActivity).filesDir
+        val currentTime: Date = Calendar.getInstance().time
+        val name: String = "$currentTime"
+        val imageFile: File = File(filesDir, "$name.jpg")
+        val os: OutputStream
+        return try {
+            os = FileOutputStream(imageFile)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
+            os.flush()
+            os.close()
+            imageFile
+        } catch (e: Exception) {
+            Log.d("LOI", "", e)
+            null
         }
     }
 
@@ -105,6 +178,7 @@ class ChatUserActivity : AppCompatActivity(), View.OnClickListener, ChatUserView
         var adapter: MessageAdapter = MessageAdapter(this@ChatUserActivity, chatarr)
         adapter.notifyDataSetChanged()
         recycle_chatuser.adapter = adapter
+
     }
 
 }

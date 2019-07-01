@@ -1,5 +1,6 @@
 package com.example.bookhotels.uiview.alldiscovery
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,8 +16,8 @@ import kotlinx.android.synthetic.main.activity_all_discovery.*
 import kotlinx.android.synthetic.main.activity_lay_hotel_id.*
 
 class LayHotelIDActivity : AppCompatActivity(), Layhotelview {
-    lateinit var layHotelidPresenter:LayHotelidPresenter
-    lateinit var allaraylist:ArrayList<Hotels>
+    lateinit var layHotelidPresenter: LayHotelidPresenter
+    lateinit var allaraylist: ArrayList<Hotels>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +27,12 @@ class LayHotelIDActivity : AppCompatActivity(), Layhotelview {
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        var  intent:Intent=intent
-        var idtp=intent.getStringExtra("idhotel")
+        var intent: Intent = intent
+        var idtp = intent.getStringExtra("idhotel")
 
         layHotelidPresenter = LayHotelidPresenter(this)
         layHotelidPresenter.gethotel(idtp)
-        
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -43,17 +44,15 @@ class LayHotelIDActivity : AppCompatActivity(), Layhotelview {
             else -> return super.onOptionsItemSelected(item)
         }
     }
-    override fun gethotel(hotelis: ArrayList<Hotels>) {
-        allaraylist= ArrayList()
-        allaraylist=hotelis
-        Log.d("OOOOOO" ,""+allaraylist.size)
 
-        var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager =
-            androidx.recyclerview.widget.GridLayoutManager(this, 2)
-        linearLayoutManager.orientation = androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-        recycle_alldisid.layoutManager=linearLayoutManager
-        var adapter: AllDiscoveryHotel = AllDiscoveryHotel(this,hotelis)
-        adapter.notifyDataSetChanged()
-        recycle_alldisid.adapter =adapter
+    @SuppressLint("WrongConstant")
+    override fun gethotel(hotelis: ArrayList<Hotels>) {
+        allaraylist = ArrayList()
+        allaraylist = hotelis
+        val linearLayoutManager = GridLayoutManager(this, 2)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        recycle_alldisid.layoutManager = linearLayoutManager
+        val adapter = AllDiscoveryHotel(this)
+        recycle_alldisid.adapter = adapter
     }
 }
